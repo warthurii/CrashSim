@@ -1,4 +1,4 @@
-import numpy as np
+#import numpy as np
 import hashlib
 import string
 import hmac
@@ -23,13 +23,33 @@ def get_prev_game(hash_code):
     m.update(hash_code.encode("utf-8"))
     return m.hexdigest()
 
-results = []
-count = 0
+# results = []
 max = 0
 cntTwo, cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen= 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 cntTwoMax, cntTwoFiveMax, cntThreeMax, cntFourMax, cntFiveMax, cntSixMax, cntSevenMax, cntEightMax, cntNineMax, cntTenMax= 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 while game_hash != first_game:
     result = get_result(game_hash)
+
+    # if(result <= 2):
+    #     cntTwo, cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+    # elif(result <= 2.5):
+    #     cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1, 1
+    # elif(result <= 3):
+    #     cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1
+    # elif(result <= 4):
+    #     cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1
+    # elif(result <= 5):
+    #     cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1
+    # elif(result <= 6):
+    #     cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1
+    # elif(result <= 7):
+    #     cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1
+    # elif(result <= 8):
+    #     cntEight, cntNine, cntTen += 1, 1, 1
+    # elif(result <= 9)
+    #     cntNine, cntTen += 1, 1
+    # elif(reult <= 10):
+    #     cntTen += 1
 
     if(result <= 2):
         cntTwo += 1
@@ -37,82 +57,82 @@ while game_hash != first_game:
         if(cntTwo > cntTwoMax):
             cntTwoMax = cntTwo
             cntTwo = 0
-    if(result <= 2.5):
-        cntTwoFive += 1
-    else:
-        if(cntTwoFive > cntTwoFiveMax):
-            cntTwoFiveMax = cntTwoFive
-            cntTwoFive = 0
-    if(result <= 3):
-        cntThree += 1
-    else:
-        if(cntThree > cntThreeMax):
-            cntThreeMax = cntThree
-            cntThree = 0
-    if(result <= 4):
-        cntFour += 1
-    else:
-        if(cntFour > cntFourMax):
-            cntFourMax = cntFour
-            cntFour = 0
-    if(result <= 5):
-        cntFive += 1
-    else:
-        if(cntFive > cntFiveMax):
-            cntFiveMax = cntFive
-            cntFive = 0
-    if(result <= 6):
-        cntSix += 1
-    else:
-        if(cntSix > cntSixMax):
-            cntSixMax = cntSix
-            cntSix = 0
-    if(result <= 7):
-        cntSeven += 1
-    else:
-        if(cntSeven > cntSevenMax):
-            cntSevenMax = cntSeven
-            cntSeven = 0
-    if(result <= 8):
-        cntEight += 1
-    else:
-        if(cntEight > cntEightMax):
-            cntEightMax = cntEight
-            cntEight = 0
-    if(result <= 9):
-        cntNine += 1
-    else:
-        if(cntNine > cntNineMax):
-            cntNineMax = cntNine
-            cntNine = 0
-    if(result <= 10):
-        cntTen += 1
-    else:
-        if(cntTen > cntTenMax):
-            cntTenMax = cntTen
-            cntTen = 0
+    # if(result <= 2.5):
+    #     cntTwoFive += 1
+    # elif(result > 2.5):
+    #     if(cntTwoFive > cntTwoFiveMax):
+    #         cntTwoFiveMax = cntTwoFive
+    #         cntTwoFive = 0
+    # if(result <= 3):
+    #     cntThree += 1
+    # elif(result > 3):
+    #     if(cntThree > cntThreeMax):
+    #         cntThreeMax = cntThree
+    #         cntThree = 0
+    # if(result <= 4):
+    #     cntFour += 1
+    # elif(result > 4):
+    #     if(cntFour > cntFourMax):
+    #         cntFourMax = cntFour
+    #         cntFour = 0
+    # if(result <= 5):
+    #     cntFive += 1
+    # elif(result > 5):
+    #     if(cntFive > cntFiveMax):
+    #         cntFiveMax = cntFive
+    #         cntFive = 0
+    # if(result <= 6):
+    #     cntSix += 1
+    # elif(result > 6):
+    #     if(cntSix > cntSixMax):
+    #         cntSixMax = cntSix
+    #         cntSix = 0
+    # if(result <= 7):
+    #     cntSeven += 1
+    # elif(result > 7):
+    #     if(cntSeven > cntSevenMax):
+    #         cntSevenMax = cntSeven
+    #         cntSeven = 0
+    # if(result <= 8):
+    #     cntEight += 1
+    # elif(result > 8):
+    #     if(cntEight > cntEightMax):
+    #         cntEightMax = cntEight
+    #         cntEight = 0
+    # if(result <= 9):
+    #     cntNine += 1
+    # elif(result > 9):
+    #     if(cntNine > cntNineMax):
+    #         cntNineMax = cntNine
+    #         cntNine = 0
+    # if(result <= 10):
+    #     cntTen += 1
+    # elif(result > 10):
+    #     if(cntTen > cntTenMax):
+    #         cntTenMax = cntTen
+    #         cntTen = 0
+    
     if(result > max):
         max = result
 
-    results.append(result)
+    # results.append(result)
     game_hash = get_prev_game(game_hash)
 
-print(count)
 with open("streaks.txt", 'w') as file_handler:
     file_handler.write("Longest streak <= 2: %d\n" % cntTwoMax)
-    file_handler.write("Longest streak <= 2.5 %d\n" % cntTwoFiveMax)
-    file_handler.write("Longest streak <= 3: %d\n" % cntThreeMax)
-    file_handler.write("Longest streak <= 4: %d\n" % cntFourMax)
-    file_handler.write("Longest streak <= 5: %d\n" % cntFiveMax)
-    file_handler.write("Longest streak <= 6: %d\n" % cntSixMax)
-    file_handler.write("Longest streak <= 7: %d\n" % cntSevenMax)
-    file_handler.write("Longest streak <= 8: %d\n" % cntEightMax)
-    file_handler.write("Longest streak <= 9: %d\n" % cntNineMax)
-    file_handler.write("Longest streak <= 10: %d\n" % cntTenMax)
-    file_handler.write("Largest Number: %f\n" % max)
+    # file_handler.write("Longest streak <= 2.5 %d\n" % cntTwoFiveMax)
+    # file_handler.write("Longest streak <= 3: %d\n" % cntThreeMax)
+    # file_handler.write("Longest streak <= 4: %d\n" % cntFourMax)
+    # file_handler.write("Longest streak <= 5: %d\n" % cntFiveMax)
+    # file_handler.write("Longest streak <= 6: %d\n" % cntSixMax)
+    # file_handler.write("Longest streak <= 7: %d\n" % cntSevenMax)
+    # file_handler.write("Longest streak <= 8: %d\n" % cntEightMax)
+    # file_handler.write("Longest streak <= 9: %d\n" % cntNineMax)
+    # file_handler.write("Longest streak <= 10: %d\n" % cntTenMax)
+    # file_handler.write("Largest Number: %f\n" % max)
 
-results = np.array(results)
+#results = np.array(results)
 
-with open("results.txt", 'w') as file_handler:
-    for x in results:
-        file_handler.write("%f\n" % x)
+# with open("results.txt", 'w') as file_handler:
+#     for x in results:
+#         file_handler.write("%f\n" % x)
