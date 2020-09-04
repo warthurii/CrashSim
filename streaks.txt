@@ -1,0 +1,11 @@
+Longest streak <= 2: 1345
+Longest streak <= 2.5 1625
+Longest streak <= 3: 1895
+Longest streak <= 4: 2313
+Longest streak <= 5: 2585
+Longest streak <= 6: 2891
+Longest streak <= 7: 3149
+Longest streak <= 8: 3475
+Longest streak <= 9: 3671
+Longest streak <= 10: 3839
+Largest Number: 658072.860000
