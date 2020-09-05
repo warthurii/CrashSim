@@ -5,7 +5,7 @@ import hmac
 
 e = 2**52
 salt = "0000000000000000000fa3b65e43e4240d71762a5bf397d5304b2596d116859c"
-game_hash = "822960e79ac367834756e031ed88a5e3a55bd649eb4975e151beb43148711d4a"
+game_hash = "725e21f12b1312c91be9e4d0ce59ec4cdbbd6df05b39fafc85978a61077ee2cb"
 first_game = "77b271fe12fca03c618f63dfb79d4105726ba9d4a25bb3f1964e435ccf9cb209"
 
 def get_result(game_hash):
@@ -23,116 +23,35 @@ def get_prev_game(hash_code):
     m.update(hash_code.encode("utf-8"))
     return m.hexdigest()
 
-# results = []
-max = 0
-cntTwo, cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen= 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-cntTwoMax, cntTwoFiveMax, cntThreeMax, cntFourMax, cntFiveMax, cntSixMax, cntSevenMax, cntEightMax, cntNineMax, cntTenMax= 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-while game_hash != first_game:
-    result = get_result(game_hash)
+def longestRun(multi):
+    cnt = 0
+    cntMax = 0
+    game_hash = "725e21f12b1312c91be9e4d0ce59ec4cdbbd6df05b39fafc85978a61077ee2cb"
 
-    # if(result <= 2):
-    #     cntTwo, cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-    # elif(result <= 2.5):
-    #     cntTwoFive, cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1, 1
-    # elif(result <= 3):
-    #     cntThree, cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1, 1
-    # elif(result <= 4):
-    #     cntFour, cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1, 1
-    # elif(result <= 5):
-    #     cntFive, cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1, 1
-    # elif(result <= 6):
-    #     cntSix, cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1, 1
-    # elif(result <= 7):
-    #     cntSeven, cntEight, cntNine, cntTen += 1, 1, 1, 1
-    # elif(result <= 8):
-    #     cntEight, cntNine, cntTen += 1, 1, 1
-    # elif(result <= 9)
-    #     cntNine, cntTen += 1, 1
-    # elif(reult <= 10):
-    #     cntTen += 1
+    while game_hash != first_game:
+        result = get_result(game_hash)
 
-    if(result <= 2):
-        cntTwo += 1
-    else:
-        if(cntTwo > cntTwoMax):
-            cntTwoMax = cntTwo
-            cntTwo = 0
-    # if(result <= 2.5):
-    #     cntTwoFive += 1
-    # elif(result > 2.5):
-    #     if(cntTwoFive > cntTwoFiveMax):
-    #         cntTwoFiveMax = cntTwoFive
-    #         cntTwoFive = 0
-    # if(result <= 3):
-    #     cntThree += 1
-    # elif(result > 3):
-    #     if(cntThree > cntThreeMax):
-    #         cntThreeMax = cntThree
-    #         cntThree = 0
-    # if(result <= 4):
-    #     cntFour += 1
-    # elif(result > 4):
-    #     if(cntFour > cntFourMax):
-    #         cntFourMax = cntFour
-    #         cntFour = 0
-    # if(result <= 5):
-    #     cntFive += 1
-    # elif(result > 5):
-    #     if(cntFive > cntFiveMax):
-    #         cntFiveMax = cntFive
-    #         cntFive = 0
-    # if(result <= 6):
-    #     cntSix += 1
-    # elif(result > 6):
-    #     if(cntSix > cntSixMax):
-    #         cntSixMax = cntSix
-    #         cntSix = 0
-    # if(result <= 7):
-    #     cntSeven += 1
-    # elif(result > 7):
-    #     if(cntSeven > cntSevenMax):
-    #         cntSevenMax = cntSeven
-    #         cntSeven = 0
-    # if(result <= 8):
-    #     cntEight += 1
-    # elif(result > 8):
-    #     if(cntEight > cntEightMax):
-    #         cntEightMax = cntEight
-    #         cntEight = 0
-    # if(result <= 9):
-    #     cntNine += 1
-    # elif(result > 9):
-    #     if(cntNine > cntNineMax):
-    #         cntNineMax = cntNine
-    #         cntNine = 0
-    # if(result <= 10):
-    #     cntTen += 1
-    # elif(result > 10):
-    #     if(cntTen > cntTenMax):
-    #         cntTenMax = cntTen
-    #         cntTen = 0
-    
-    if(result > max):
-        max = result
+        # Conditions to count and find the longest streak less than each multiplier.
+        if result <= multi:
+            cnt += 1
+            if cnt > cntMax:
+                cntMax = cnt
+        else:
+            cnt = 0
 
-    # results.append(result)
-    game_hash = get_prev_game(game_hash)
+        game_hash = get_prev_game(game_hash)
 
-with open("streaks.txt", 'w') as file_handler:
-    file_handler.write("Longest streak <= 2: %d\n" % cntTwoMax)
-    # file_handler.write("Longest streak <= 2.5 %d\n" % cntTwoFiveMax)
-    # file_handler.write("Longest streak <= 3: %d\n" % cntThreeMax)
-    # file_handler.write("Longest streak <= 4: %d\n" % cntFourMax)
-    # file_handler.write("Longest streak <= 5: %d\n" % cntFiveMax)
-    # file_handler.write("Longest streak <= 6: %d\n" % cntSixMax)
-    # file_handler.write("Longest streak <= 7: %d\n" % cntSevenMax)
-    # file_handler.write("Longest streak <= 8: %d\n" % cntEightMax)
-    # file_handler.write("Longest streak <= 9: %d\n" % cntNineMax)
-    # file_handler.write("Longest streak <= 10: %d\n" % cntTenMax)
-    # file_handler.write("Largest Number: %f\n" % max)
+    return cntMax
 
-#results = np.array(results)
+def optimalPercentage(num):
+    i = 0
+    result = 100.0
+    while i < num:
+        result = result/2
+        i += 1
+    return result
 
-# with open("results.txt", 'w') as file_handler:
-#     for x in results:
-#         file_handler.write("%f\n" % x)
+print(optimalPercentage(17))
+print(optimalPercentage(30))
+print(optimalPercentage(42))
+print(optimalPercentage(63))
