@@ -5,7 +5,7 @@ import hmac
 
 e = 2**52
 salt = "0000000000000000000fa3b65e43e4240d71762a5bf397d5304b2596d116859c"
-game_hash = "725e21f12b1312c91be9e4d0ce59ec4cdbbd6df05b39fafc85978a61077ee2cb"
+game_hash = "cf4b7cd4824de8e19609b748d5718e276d17f9f4e367232c1635308ee266c09c"
 first_game = "77b271fe12fca03c618f63dfb79d4105726ba9d4a25bb3f1964e435ccf9cb209"
 
 def get_result(game_hash):
@@ -51,7 +51,21 @@ def optimalPercentage(num):
         i += 1
     return result
 
-print(optimalPercentage(17))
-print(optimalPercentage(30))
-print(optimalPercentage(42))
-print(optimalPercentage(63))
+def determineProfit(multi, perc):
+    bankroll = 100
+
+    bet = perc
+
+    while game_hash != first_game:
+        result = get_result(game_hash)
+
+        if(result <= multi):
+            bankroll = bankroll - bet
+            bet = bet * 2
+        else:
+            bankroll = bankroll + (bet * multi)
+            bet = perc
+
+    return bankroll - 100
+
+print(determineProfit(2, optimalPercentage(18)))
