@@ -1,4 +1,5 @@
-Longest streak <= 2: 18
-Longest streak <= 3: 30
-Longest streak <= 4: 42
-Longest streak <= 5: 63
+Longest streak <= 2:    18
+Longest streak <= 2.5:  25 
+Longest streak <= 3:    30
+Longest streak <= 4:    42
+Longest streak <= 5:    63
